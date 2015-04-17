@@ -19,6 +19,7 @@ public:
 private:
     int q[12][12];
     int a[12][12];
+    int flag;
     
 };
 

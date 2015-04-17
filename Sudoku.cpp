@@ -19,8 +19,10 @@ void sudoku::ReadIn()
 }
 void sudoku::Solve()
 {
+    flag=0;
     backtrace(0);
-
+    if(flag==0)
+	cout<<0<<endl;
 }
 void sudoku::setPuzzle()
 {
@@ -84,7 +86,7 @@ void sudoku::hollow()
 {
     int deRow,deCol;
     srand( time(0) );
-    for (int i=0 ; i<20 ;i++) {
+    for (int i=0 ; i<40 ;i++) {
         deRow = rand()%12;
         deCol = rand()%12;
         if(q[deRow][deCol]==0)
@@ -139,7 +141,10 @@ bool sudoku::isPlace(int count){
 }
 void sudoku::backtrace(int count){
     if(count == 144){
-        cout<<"结果："<<endl;
+	flag++;
+	if(flag<2){
+	
+        cout<<flag<<endl;
         for(int i = 0; i < 12; ++i){
             for(int j =  0; j < 12; ++j){
                 if(a[i][j]==-1)
@@ -149,15 +154,20 @@ void sudoku::backtrace(int count){
             }
             cout<<endl;
         }
-        return;
+	}
+	else if(flag==2)
+	{
+		cout<<flag<<endl;
+	}
+	else{}
     }
     int row = count / 12;
     int col = count % 12;
     if(a[row][col] == 0){
         for(int i = 1; i <= 9; ++i){
-            a[row][col] = i;//赋值
-            if(isPlace(count)){//可以放
-                backtrace(count+1);//进入下一层
+            a[row][col] = i;
+            if(isPlace(count)){
+                backtrace(count+1);
             }
         }
         a[row][col] = 0;//回溯
