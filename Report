@@ -1,0 +1,28 @@
+程式執行的方法為要求
+make 之後
+./give_question > question.txt
+可以跑出一個數獨的命題
+./solve < question.txt
+可以讀取並且解題
+
+主程式在sudoku.cpp裡
+
+1.set puzzle函式
+為設定亂數陣列後存到主要的(q)二維陣列
+並且設定數獨的亂數排法
+而後再利用四個迴圈把-1的black block挖進去
+2.hollow函式
+則是將數字改成0
+我的設定是改20個，當然-1不會更動到
+3.print puzzle函式
+顧名思義就是輸出
+此函式傳到give_question所用
+4.isplace函式
+此部分即為解題用，判定當前的數字是否有符合橫排、直排、九宮格內都沒有重複
+5.backtrace函式
+此部分即是利用回朔的方法，利用isplace判定錯誤了就往回走，沒錯就繼續前進。
+
+最後givequestion , readin , solve三個函式為分別進入givequestion 和 solve的main函式中
+開啟方式按標準輸入/出的方式(cin cout)
+
+報告完畢^^
